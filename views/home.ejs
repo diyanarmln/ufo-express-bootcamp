@@ -1,0 +1,85 @@
+<%- include('header', {title: `UFO Sightings`}); -%>
+
+<div class="container" style="padding-top: 20px">
+  <h1 style="text-align: center">UFO Sightings</h1>
+  <br />
+  <div class="container">
+    <div class="row justify-content-space-between">
+      <div class="col-8 col-sm-6">
+        <a class="btn btn-primary" href="/sighting" role="button"
+          >Report new sighting</a
+        >
+      </div>
+      <div class="col-4 col-sm-6" style="text-align: right">
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Sort
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Date</a>
+            <a class="dropdown-item" href="#">Shape</a>
+            <a class="dropdown-item" href="#">City</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">
+              <a href="/shapes">Shapes</a>
+            </th>
+            <th scope="col">City</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sightings.forEach((sighting, index)=>{ %>
+          <tr>
+            <td><%= sighting.date %></td>
+            <td><%= sighting.shape %></td>
+            <td><%= sighting.city %></td>
+            <td style="text-align: right">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a
+                  class="btn btn-primary mr-2 btn-sm"
+                  href="/sighting/<%= index %>"
+                  role="button"
+                  >View</a
+                >
+                <span>
+                  <form
+                    action="/sighting/<%= index %>?_method=DELETE"
+                    method="POST"
+                    onclick="return confirm('Are you sure you want to delete this item?');"
+                  >
+                    <button class="btn btn-danger mr-2 btn-sm" type="submit">
+                      Delete
+                    </button>
+                  </form>
+                </div>
+              </span>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+        <br />
+      <div style="display: flex; justify-content: center">
+<button type="button"  class="btn btn-dark" disabled>Visits: <%= Number(visits) + 1%> </button>
+      </div>
+     
+  <%- include('footer'); -%>
+</div>

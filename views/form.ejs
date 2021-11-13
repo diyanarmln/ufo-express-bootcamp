@@ -1,0 +1,98 @@
+<%- include('header', {title: `Submit Sighting Report`}); -%>
+
+<div class="container" style="padding-top: 20px">
+  <h1 style="text-align: center">Submit UFO Sighting Report</h1>
+
+  <form name="mainForm" action="/sighting" method="POST">
+    <div class="form-group">
+      <label for="date">Date:</label><br />
+      <input
+        class="form-control <%= dateValidity %>"
+        type="date"
+        id="date"
+        name="date"
+      />
+      <div class="invalid-feedback">
+        Please add a date no later than today's date
+      </div>
+      <br />
+
+      <label for="time">Time (UTC):</label><br />
+      <input
+        class="form-control <%= timeValidity %>"
+        type="time"
+        id="time"
+        name="time"
+      />
+      <div class="invalid-feedback">
+        Please add a time no later than current time
+      </div>
+      <br />
+
+      <label for="city">City:</label><br />
+      <input
+        class="form-control <%= cityValidity %>"
+        type="text"
+        id="city"
+        name="city"
+      />
+      <div class="invalid-feedback">Please add a city</div>
+      <br />
+
+      <label for="state">State:</label><br />
+      <input
+        class="form-control <%= stateValidity %>"
+        type="text"
+        id="state"
+        name="state"
+      />
+      <div class="invalid-feedback">Please add a state</div>
+      <br />
+
+      <label for="shape">Shape:</label><br />
+      <input
+        class="form-control <%= shapeValidity %>"
+        type="text"
+        id="shape"
+        name="shape"
+      />
+      <div class="invalid-feedback">Please add a shape</div>
+      <br />
+
+      <label for="duration">Duration:</label><br />
+      <input
+        class="form-control <%= durationValidity %>"
+        type="text"
+        id="duration"
+        name="duration"
+      />
+      <div class="invalid-feedback">Please add a duration</div>
+      <br />
+
+      <label for="summary">Summary:</label><br />
+      <textarea
+        class="form-control <%= summaryValidity %>"
+        rows="2"
+        id="summary"
+        name="summary"
+      ></textarea>
+      <div class="invalid-feedback">Please add a summary</div>
+      <br />
+
+      <label for="text">Report Details:</label><br />
+      <textarea
+        class="form-control <%= textValidity %>"
+        rows="7"
+        id="text"
+        name="text"
+      ></textarea>
+      <div class="invalid-feedback">Please add report details</div>
+      <br />
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+      <a class="btn btn-primary" href="/" role="button">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<%- include('footer'); -%>

@@ -1,0 +1,64 @@
+<%- include('header', {title: `Sighting Report #${index+1}`}); -%>
+
+<div class="container" style="padding-top: 20px">
+    <h1>
+      Edit Sighting Report #<% const number = Number(index)+1 %><%= number %>
+    </h1>
+  </br>
+    <form action="<%= url.replace("/edit",""); %>?_method=PUT" method="POST">
+
+      <label for="date">Date:</label><br />
+      <input
+        class="form-control"
+        type="date"
+        id="date"
+        name="date"
+        value="<%= date %>"
+      /><br />
+
+      <label for="time">Time:</label><br />
+      <input
+        class="form-control"
+        type="time"
+        id="time"
+        name="time"
+        value="<%= time %>"
+      /><br />
+
+      <label for="city">City:</label><br />
+      <input class="form-control" type="text" id="city" name="city" value="<%= city %>" /><br />
+
+      <label for="state">State:</label><br />
+      <input class="form-control" type="text" id="state" name="state" value="<%= state %>" /><br />
+
+      <label for="shape">Shape:</label><br />
+      <input class="form-control" type="text" id="shape" name="shape" value="<%= shape %>" /><br />
+
+      <label for="duration">Duration:</label><br />
+      <input
+      class="form-control"
+        type="text"
+        id="duration"
+        name="duration"
+        value="<%= duration %>"
+      /><br />
+
+      <label for="summary">Summary:</label><br />
+      <textarea class="form-control"
+        rows="2" id="summary" name="summary" rows="10" cols="40">
+<%= summary %></textarea
+      ><br />
+
+            <label for="text">Report Details:</label><br />
+      <textarea class="form-control"
+        rows="5" id="text" name="text" rows="20" cols="40"><%= text %></textarea
+      ><br />
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+      <a class="btn btn-primary" href="<%= url.replace("/edit",""); %>" role="button">Cancel</a>
+
+    </form>
+  </div>
+
+<%- include('footer'); -%>
+
